@@ -1,25 +1,23 @@
 //general variables
 let capture, detector
 const canvasSize = 1200
+const ratio = canvasSize / 640 * 480
 
 //hand variables
 let mappedPalmX, mappedPalmY
 let distI, distM, distR, distP
 
 //player variables
-let players = []
 let playerLeft, playerRight
+const inc = 3
 
-
-const inc = 2
-
-//pallini variable
-let pallini = []
+//dots variable
+let dots = []
 
 
 async function setup() {
 
-	createCanvas(canvasSize, canvasSize / 640 * 480)
+	createCanvas(canvasSize, ratio)
 
 	capture = createCapture(VIDEO)
 	capture.hide()
@@ -28,10 +26,16 @@ async function setup() {
 	detector = await createDetector()
 	console.log("Modello caricato.")
 
-	playerLeft = new Player(color(255, 123, 172), "Left")
-	playerRight = new Player(color(0, 255, 172), "Right")
+	playerLeft = new Player(color(255, 123, 172), "Left", 0)
+	playerRight = new Player(color(0, 255, 172), "Right", 0)
 
-	players.push(playerLeft, playerRight);
+	for (let i = 0; i < 70; i++) {
+		let dotsLeft = new Dot(color(255, 123, 172), "Left"); // crea una nuova istanza della classe Dot
+		dots.push(dotsLeft); // aggiungi il nuovo Dot all'array
+
+		let dotsRight = new Dot(color(0, 255, 172), "Right"); // crea una nuova istanza della classe Dot
+		dots.push(dotsRight); // aggiungi il nuovo Dot all'array
+	}
 
 }
 
@@ -39,10 +43,12 @@ async function draw() {
 
 	background(255)
 
-	tint(255, 30)
+	tint(255, 20)
 	scale(-1, 1); // flip the x-axis
-	image(capture, -width, 0, width, width / 640 * 480);
+	image(capture, -width, 0, width, ratio);
 	scale(-1, 1)
+
+
 
 	if (detector && capture.loadedmetadata) {
 		const hands = await detector.estimateHands(capture.elt, { flipHorizontal: true })
@@ -68,105 +74,113 @@ async function draw() {
 			let palmX = (pinkyB.x + indexB.x) / 2;
 			let palmY = (pinkyB.y + indexB.y) / 2;
 			mappedPalmX = map(palmX, 0, capture.width, 0, canvasSize)
-			mappedPalmY = map(palmY, 0, capture.height, 0, canvasSize / 640 * 480)
+			mappedPalmY = map(palmY, 0, capture.height, 0, ratio)
 
 			if (hand.handedness === 'Left') {
 				playerLeft.x = mappedPalmX;
 				playerLeft.y = mappedPalmY;
 				playerLeft.display()
 			}
-			
+
 			if (hand.handedness === 'Right') {
 				playerRight.x = mappedPalmX;
 				playerRight.y = mappedPalmY;
 				playerRight.display()
 			}
-
-			//console.log("PLeft X is " + playerLeft.x, "PLeft Y is " + playerLeft.y)
-			//console.log("PRight X is " + playerRight.x, "PRight Y is " + playerRight.y)
-
 		}
 	}
 
-	for (let i = 0; i < pallini.length; i++) {
+	for (let i = 0; i < dots.length; i++) {
 
-		pallini[i].display(); // mostra tutti i pallini nell'array
+		dots[i].display(); // mostra tutti i dots nell'array
 
-		if (pallini[i].collide(playerLeft)) {
+		if (dots[i].collide(playerLeft)) {
 			console.log("Collided")
-			//if(pallini[i].color === playerLeft.color){
-				pallini.splice(i, 1);
-				playerLeft.foodEaten += 1;
-				console.log("Left score is " + playerLeft.foodEaten)
-			//}
+			console.log(dots[i].color)
+
+			dots.splice(i, 1);
+			playerLeft.score += 1;
+
+			console.log("Left score is " + playerLeft.score)
 		}
 
-		if (pallini[i].collide(playerRight)) {
+		if (dots[i].collide(playerRight)) {
 			console.log("Collided")
-			//if(pallini[i].color === playerRight.color){
-				pallini.splice(i, 1);
-				playerRight.foodEaten += 1;
-				console.log("Right score is " + playerRight.foodEaten)
-			//}
-		}
-	}
-	
-}
+			console.log(dots[i].color)
 
-function keyPressed() {
-	if (keyCode === 32) { // spazio per creare un nuovo pallino
-		for (let i = 0; i < 40; i++) {
-			let newPallino = new Pallino(); // crea una nuova istanza della classe Pallino
-			pallini.push(newPallino); // aggiungi il nuovo pallino all'array
+			dots.splice(i, 1);
+			playerRight.score += 1;
+
+			console.log("Right score is " + playerRight.score)
 		}
 	}
+
+	textSize(40)
+	textAlign(CENTER)
+	fill(255, 123, 172)
+	text(playerLeft.score, 40, 55)
+	fill(0, 255, 172)
+	text(playerRight.score, width - 40, 55)
+
+	if (playerLeft.score == 50 || playerRight.score == 50) {
+
+		fill(0, 0, 0)
+		textSize(70)
+		text("Game over!", width / 2, height / 2 - 45)
+
+		if (playerLeft.score == 50) {
+			fill(255, 123, 172)
+			text("Player 1 won", width / 2, height / 2 + 45)
+			noLoop()
+
+		} else {
+			fill(0, 255, 172)
+			text("Player 2 won", width / 2, height / 2 + 45)
+			noLoop()
+		}
+	}
+
 }
 
 function windowResized() {
-	resizeCanvas(canvasSize, canvasSize / 640 * 480)
-	image(capture, -width, 0, width, width / 640 * 480)
+	resizeCanvas(canvasSize, ratio)
+	image(capture, -width, 0, width, ratio)
 }
 
-class Pallino {
-	constructor() {
+class Dot {
+	constructor(color, playerdot) {
 		this.x = random(width);
 		this.y = random(height);
-		this.d = 20;
+		this.d = 15;
 		this.stroke = 0;
-		if (random(1) < 0.5) {
-			this.color = color(255, 123, 172);
-		} else {
-			this.color = color(0, 255, 172);
-		}
+		this.color = color;
+		this.playerdot = playerdot
 	}
 
 	display() {
 		fill(this.color)
 		stroke(this.stroke)
-		ellipse(this.x, this.y, this.d); // mostra il pallino
-
+		ellipse(this.x, this.y, this.d); // mostra il Dot
 	}
 
 	collide(player) {
-		const distCentri = dist(this.x, this.y, player.x, player.y + 20);
-		const sommaRaggi = this.d / 2 + (player.d - 70) / 2; // raggio della bocca
-		if (distCentri < sommaRaggi){
+		const distCenter = dist(this.x, this.y, player.x, player.y + 20);
+		const sumRadius = this.d / 2 + (player.d - 70) / 2; // raggio della bocca
+		if (distCenter < sumRadius && this.playerdot == player.handedness) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 }
-
 class Player {
-	constructor(color, handedness = "") {
+	constructor(color, handedness, score) {
 		this.x;
 		this.y;
 		this.d = 100;
 		this.handedness = handedness;
 		this.color = color;
-		this.foodEaten = 0;
-		this.trigger = false;
+		this.score = score;
 	}
 
 	display() {
@@ -175,7 +189,7 @@ class Player {
 
 		//face
 		fill(this.color)
-		ellipse(this.x, this.y, this.d + inc * this.foodEaten, this.d + inc * this.foodEaten)
+		ellipse(this.x, this.y, this.d + inc * this.score, this.d + inc * this.score)
 
 		//eyes
 		fill(0)
@@ -184,23 +198,9 @@ class Player {
 
 		//mouth
 		if (distI && distM && distR && distP > 40) {
-			this.setTrigger()
-
 			fill(0)
 			ellipse(this.x, this.y + 20, this.d - 70, this.d - 70)
-
-			this.resetTrigger()
 		}
-	}
-
-	// Method to set the trigger to true
-	setTrigger() {
-		this.trigger = true;
-	}
-
-	// Method to reset the trigger to false
-	resetTrigger() {
-		this.trigger = false;
 	}
 
 }
