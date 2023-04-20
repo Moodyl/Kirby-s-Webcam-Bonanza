@@ -25,8 +25,8 @@ async function setup() {
 	detector = await createDetector()
 	console.log("Modello caricato.")
 
-	playerLeft = new Player(color(255, 123, 172), "Left", 0)
-	playerRight = new Player(color(0, 255, 172), "Right", 0)
+	playerLeft = new Player(color(255, 123, 172), "Left")
+	playerRight = new Player(color(0, 255, 172), "Right")
 
 	for (let i = 0; i < 70; i++) {
 		let dotsLeft = new Dot(color(255, 123, 172), "Left");
@@ -110,34 +110,52 @@ async function draw() {
 	fill(255, 123, 172)
 	rectMode(CENTER)
 	noStroke()
-	square(40, 40, 60, 5)
+	rect(width/2 - 40, 50, 80, 70, 5, 0, 0, 5)
 	fill(255)
-	text(playerLeft.score, 40, 55)
+	text(playerLeft.score, width/2 - 40, 55)
+	textSize(15)
+	text("Player 1", width/2 - 40, 75)
 
+	textSize(40)
 	fill(255, 123, 172)
 	rectMode(CENTER)
 	noStroke()
 	fill(0, 255, 172)
-	square(width - 40, 40, 60, 5)
+	rect(width/2 + 40, 50, 80, 70, 0, 5, 5, 0)
 	fill(255)
-	text(playerRight.score, width - 40, 55)
+	text(playerRight.score, width/2 + 40, 55)
+	textSize(15)
+	text("Player 2", width/2 + 40, 75)
 
 	if (playerLeft.score == 50 || playerRight.score == 50) {
 
-		fill(0, 0, 0)
-		textSize(70)
-		text("Game over!", width / 2, height / 2 - 45)
+		textSize(40)
 
 		if (playerLeft.score == 50) {
-			fill(255, 123, 172)
-			text("Player 1 won", width / 2, height / 2 + 45)
-			noLoop()
+			background(255, 123, 172)
+
+			fill(0)
+			text("Game over!", width / 2, height / 2 - 22)
+			
+			fill(255)
+			text("Player 1 won", width / 2, height / 2 + 22)
+			
 
 		} else {
-			fill(0, 255, 172)
-			text("Player 2 won", width / 2, height / 2 + 45)
-			noLoop()
+			background(0, 255, 172)
+			
+			fill(0)
+			text("Game over!", width / 2, height / 2 - 22)
+			
+			fill(255)
+			text("Player 2 won", width / 2, height / 2 + 22)
 		}
+
+		textSize(20)
+		fill(0)
+		text("Press spacebar to restart", width / 2, height / 2 + 30 * 2)
+		noLoop()
+
 	}
 
 }
@@ -147,11 +165,17 @@ function windowResized() {
 	image(capture, -width, 0, width, ratio)
 }
 
+function keyPressed(){
+	if (keyCode == 32){
+		location.reload();
+	}
+}
+
 class Dot {
 	constructor(color, playerdot) {
-		this.x = random(width);
-		this.y = random(height);
 		this.d = 15;
+		this.x = random(0 + this.d, width - this.d);
+		this.y = random(0 + this.d, height - this.d);
 		this.stroke = 0;
 		this.color = color;
 		this.playerdot = playerdot
@@ -166,7 +190,7 @@ class Dot {
 	collide(player) {
 		const distCenter = dist(this.x, this.y, player.x, player.y + 20);
 		const sumRadius = this.d / 2 + (player.d - 70) / 2; // raggio della bocca
-		if (distCenter < sumRadius && this.playerdot == player.handedness && distI && distM && distR && distP > 40) {
+		if ((distCenter < sumRadius) && (this.playerdot == player.handedness) && (distI > 40 && distM > 40 && distR > 40 && distP > 40)) {
 			return true;
 		} else {
 			return false;
@@ -175,13 +199,13 @@ class Dot {
 }
 
 class Player {
-	constructor(color, handedness, score) {
+	constructor(color, handedness) {
 		this.x;
 		this.y;
 		this.d = 100;
 		this.handedness = handedness;
 		this.color = color;
-		this.score = score;
+		this.score = 0;
 	}
 
 	display() {
@@ -198,7 +222,7 @@ class Player {
 		ellipse(this.x + 15, this.y - 10, this.d - 85, this.d - 65)
 
 		//mouth
-		if (distI && distM && distR && distP > 40) {
+		if (distI > 40 && distM > 40 && distR > 40 && distP > 40) {
 			fill(0)
 			ellipse(this.x, this.y + 20, this.d - 70, this.d - 70)
 		}
