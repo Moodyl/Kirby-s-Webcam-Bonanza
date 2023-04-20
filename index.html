@@ -29,12 +29,14 @@
 			width: 100%;
 			margin: 0;
 			padding: 0;
-			background-color: rgb(255, 214, 248);
+			background-color: #ffafcc;
 			display: flex;
+			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-			color: #fff;
+			font-family: "grenadine-mvb", sans-serif;
+			font-weight: 400;
+			font-style: normal;
 
 		}
 
@@ -51,27 +53,36 @@
 
 		canvas {
 			display: block;
-			border: 1px solid white;
+			border-radius: 5px;
 		}
 
 		a {
 			position: absolute;
 			top: 20px;
 			left: 20px;
-			color: #fff;
+			color: #ffafcc;
+			text-decoration: none;
+			padding: 15px 20px;
+			background-color: #fff;
+			border-radius: 5px;
+			transition: all 0.2s;
+		}
+		a:hover {
+			background-color: #fff;
 		}
 
 		h1 {
-			font-size: 120px;
-			margin: 0;
+			color: #fff;
+			font-size: 60px;
+			margin: 0 0 20px 0;
 		}
 
 	</style>
 </head>
 
 <body>
-	<a href="#">INDEX</a>
-	<!--<h1>Kirby Webcam Bonanza</h1>-->
+	<a href="https://ixd-supsi.github.io/2023/progetti/marionettadigitale/">index</a>
+	<h1>Kirby's Webcam Bonanza</h1>
 	<script src="src/sketch.js"></script>
 </body>
 

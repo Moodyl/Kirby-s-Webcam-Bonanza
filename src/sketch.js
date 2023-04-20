@@ -1,6 +1,6 @@
 //general variables
 let capture, detector
-const canvasSize = 1200
+const canvasSize = 1100
 const ratio = canvasSize / 640 * 480
 
 //hand variables
@@ -13,7 +13,6 @@ const inc = 3
 
 //dots variable
 let dots = []
-
 
 async function setup() {
 
@@ -30,11 +29,11 @@ async function setup() {
 	playerRight = new Player(color(0, 255, 172), "Right", 0)
 
 	for (let i = 0; i < 70; i++) {
-		let dotsLeft = new Dot(color(255, 123, 172), "Left"); // crea una nuova istanza della classe Dot
-		dots.push(dotsLeft); // aggiungi il nuovo Dot all'array
+		let dotsLeft = new Dot(color(255, 123, 172), "Left");
+		dots.push(dotsLeft); 
 
-		let dotsRight = new Dot(color(0, 255, 172), "Right"); // crea una nuova istanza della classe Dot
-		dots.push(dotsRight); // aggiungi il nuovo Dot all'array
+		let dotsRight = new Dot(color(0, 255, 172), "Right");
+		dots.push(dotsRight);
 	}
 
 }
@@ -47,7 +46,6 @@ async function draw() {
 	scale(-1, 1); // flip the x-axis
 	image(capture, -width, 0, width, ratio);
 	scale(-1, 1)
-
 
 
 	if (detector && capture.loadedmetadata) {
@@ -95,31 +93,33 @@ async function draw() {
 		dots[i].display(); // mostra tutti i dots nell'array
 
 		if (dots[i].collide(playerLeft)) {
-			console.log("Collided")
-			console.log(dots[i].color)
 
 			dots.splice(i, 1);
 			playerLeft.score += 1;
-
-			console.log("Left score is " + playerLeft.score)
 		}
 
 		if (dots[i].collide(playerRight)) {
-			console.log("Collided")
-			console.log(dots[i].color)
-
 			dots.splice(i, 1);
 			playerRight.score += 1;
-
-			console.log("Right score is " + playerRight.score)
 		}
 	}
 
 	textSize(40)
 	textAlign(CENTER)
+
 	fill(255, 123, 172)
+	rectMode(CENTER)
+	noStroke()
+	square(40, 40, 60, 5)
+	fill(255)
 	text(playerLeft.score, 40, 55)
+
+	fill(255, 123, 172)
+	rectMode(CENTER)
+	noStroke()
 	fill(0, 255, 172)
+	square(width - 40, 40, 60, 5)
+	fill(255)
 	text(playerRight.score, width - 40, 55)
 
 	if (playerLeft.score == 50 || playerRight.score == 50) {
@@ -166,13 +166,14 @@ class Dot {
 	collide(player) {
 		const distCenter = dist(this.x, this.y, player.x, player.y + 20);
 		const sumRadius = this.d / 2 + (player.d - 70) / 2; // raggio della bocca
-		if (distCenter < sumRadius && this.playerdot == player.handedness) {
+		if (distCenter < sumRadius && this.playerdot == player.handedness && distI && distM && distR && distP > 40) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 }
+
 class Player {
 	constructor(color, handedness, score) {
 		this.x;
