@@ -216,10 +216,25 @@ class Player {
 		fill(this.color)
 		ellipse(this.x, this.y, this.d + inc * this.score, this.d + inc * this.score)
 
+		if(this.handedness == "Left"){
+			fill(255, 30, 100)
+		} else {
+			fill(0, 200, 172)
+		}
+		ellipse(this.x - 30, this.y + 10, this.d - 75, this.d - 85)
+		ellipse(this.x + 30, this.y + 10, this.d - 75, this.d - 85)
+		
+
 		//eyes
 		fill(0)
 		ellipse(this.x - 15, this.y - 10, this.d - 85, this.d - 65)
+		fill(255)
+		ellipse(this.x - 15, this.y - 17, this.d - 95, this.d - 87)
+
+		fill(0)
 		ellipse(this.x + 15, this.y - 10, this.d - 85, this.d - 65)
+		fill(255)
+		ellipse(this.x + 15, this.y - 17, this.d - 95, this.d - 87)
 
 		//mouth
 		if (distI > 40 && distM > 40 && distR > 40 && distP > 40) {
