@@ -1,7 +1,7 @@
 # Documentazione - Kirby’s Webcam Bonanza
 Il progetto consiste in un minigioco multigiocatore di agilità e precisione dove ogni giocatore dovrà maneggiare la propria marionetta e mangiare i propri pallini per guadagnare punti e vincere.
 
-
+https://github.com/Moodyl/Kirby-s-Webcam-Bonanza/assets/101795037/e4082030-1534-49bf-9d6e-fb3ff41630df
 
 ## Riferimenti progettuali
 La marionetta è basata su Kirby, un personaggio della serie di videogiochi “Kirby“ prodotta da Nintendo.
@@ -115,5 +115,3 @@ class Dot {
 
 ## Target e contesto d’uso
 Essendo un prodotto a scopo ludico, il target è piuttosto ampio (ma specialmente adatto ad un pubblico giovane) ed il contesto d’uso può essere per spazi interattivi touchless.
-
-https://github.com/Moodyl/Kirby-s-Webcam-Bonanza/assets/101795037/e4082030-1534-49bf-9d6e-fb3ff41630df
