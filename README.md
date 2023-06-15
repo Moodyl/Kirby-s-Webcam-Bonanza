@@ -17,9 +17,9 @@ Ad ogni pallino mangiato il proprio Kirby crescerà.
 La sfida sta nell’essere più veloci ma anche più precisi dell’altro giocatore, la bocca è relativamente piccola e quindi il margine di errore nel mancare il pallino nella fretta è abbastanza elevato.
 Il gioco finisce quando uno dei due giocatori raggiunge i 50 punti. Premendo spazio una volta finito il minigioco ti permette di riavviarlo.
 
-<img width="1904" alt="Screen-1" src="https://github.com/Moodyl/Kirby-s-Webcam-Bonanza/assets/101795037/e280e9da-ee41-47dc-bb4b-9736de9ab639">
-<img width="1904" alt="Screen-2" src="https://github.com/Moodyl/Kirby-s-Webcam-Bonanza/assets/101795037/59bff371-fee5-4b99-9655-e3c7ec4745df">
-<img width="1904" alt="Screen-3" src="https://github.com/Moodyl/Kirby-s-Webcam-Bonanza/assets/101795037/b7780a30-0771-4fe7-8b49-75f1538422a5">
+<img width="500" alt="Screen-1" src="https://github.com/Moodyl/Kirby-s-Webcam-Bonanza/assets/101795037/e280e9da-ee41-47dc-bb4b-9736de9ab639">
+<img width="500" alt="Screen-2" src="https://github.com/Moodyl/Kirby-s-Webcam-Bonanza/assets/101795037/59bff371-fee5-4b99-9655-e3c7ec4745df">
+<img width="500" alt="Screen-3" src="https://github.com/Moodyl/Kirby-s-Webcam-Bonanza/assets/101795037/b7780a30-0771-4fe7-8b49-75f1538422a5">
 
 
 ## Tecnologia utilizzata
@@ -115,3 +115,5 @@ class Dot {
 
 ## Target e contesto d’uso
 Essendo un prodotto a scopo ludico, il target è piuttosto ampio (ma specialmente adatto ad un pubblico giovane) ed il contesto d’uso può essere per spazi interattivi touchless.
+
+https://github.com/Moodyl/Kirby-s-Webcam-Bonanza/assets/101795037/e4082030-1534-49bf-9d6e-fb3ff41630df
