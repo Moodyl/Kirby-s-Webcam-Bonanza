@@ -16,12 +16,85 @@ Il gioco finisce quando uno dei due giocatori raggiunge i 50 punti. Premendo spa
 ## Tecnologia utilizzata
 Il progetto si focalizza all’utilizzo della libreria MediaPipe per il tracciamento delle mani tramite la webcam del dispositivo.
 Il programma utilizza primariamente due classi per produrre i pallini ed i giocatori, questo facilita la scalabilità del progetto per il numero di giocatori.
+
+```js
+class Player {
+	constructor(color, handedness) {
+		this.x = mappedPalmX;
+		this.y = mappedPalmY;
+		this.d = 100;
+		this.handedness = handedness;
+		this.color = color;
+		this.score = 0;
+	}
+
+	display() {
+
+		noStroke()
+
+		//face
+		fill(this.color)
+		ellipse(this.x, this.y, this.d + inc * this.score, this.d + inc * this.score)
+
+		if(this.handedness == "Left"){
+			fill(255, 30, 100)
+		} else {
+			fill(0, 200, 172)
+		}
+		ellipse(this.x - 30, this.y + 10, this.d - 75, this.d - 85)
+		ellipse(this.x + 30, this.y + 10, this.d - 75, this.d - 85)
+		
+
+		//eyes
+		fill(0)
+		ellipse(this.x - 15, this.y - 10, this.d - 85, this.d - 65)
+		fill(255)
+		ellipse(this.x - 15, this.y - 17, this.d - 95, this.d - 87)
+
+		fill(0)
+		ellipse(this.x + 15, this.y - 10, this.d - 85, this.d - 65)
+		fill(255)
+		ellipse(this.x + 15, this.y - 17, this.d - 95, this.d - 87)
+
+		//mouth
+		if (distI > 40 && distM > 40 && distR > 40 && distP > 40) {
+			fill(0)
+			ellipse(this.x, this.y + 20, this.d - 70, this.d - 70)
+		}
+	}
+
+}
+```
+
 I pallini sono contenuti in un array di modo da restare memorizzati nella posizione data e, utilizzando push() e splice(), l’array viene modificato.
 La classe Dot contiene il metodo collide() che permette il trigger dello splicing e l’aumento del punteggio del giocatore.
 
-```
-function test() {
-  console.log("notice the blank line before this function?");
+```js
+class Dot {
+	constructor(color, playerdot) {
+		this.d = 15;
+		this.x = random(0 + this.d, width - this.d);
+		this.y = random(0 + this.d, height - this.d);
+		this.stroke = 0;
+		this.color = color;
+		this.playerdot = playerdot
+	}
+
+	display() {
+		fill(this.color)
+		stroke(this.stroke)
+		ellipse(this.x, this.y, this.d); // mostra il Dot
+	}
+
+	collide(player) {
+		const distCenter = dist(this.x, this.y, player.x, player.y + 20);
+		const sumRadius = this.d / 2 + (player.d - 70) / 2; // raggio della bocca
+		if ((distCenter < sumRadius) && (this.playerdot == player.handedness) && (distI > 40 && distM > 40 && distR > 40 && distP > 40)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 ```
 
