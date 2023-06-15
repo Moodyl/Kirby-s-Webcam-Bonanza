@@ -4,6 +4,8 @@ Il progetto consiste in un minigioco multigiocatore di agilità e precisione dov
 ## Riferimenti progettuali
 La marionetta è basata su Kirby, un personaggio della serie di videogiochi “Kirby“ prodotta da Nintendo.
 Kirby nel suo canon ha il potere di aspirare e mangiare qualsiasi cosa, quindi ecco perché il minigioco è incentrato sul mangiare pallini.
+![image](https://github.com/Moodyl/Kirby-s-Webcam-Bonanza/assets/101795037/57642b77-39c1-4f2e-8c5e-42481b5dd4ec)
+
 
 ## Design dell’interfaccia e modalità di interazione
 L’interfaccia è ridotta a 3 elementi principali: il canvas al centro della pagina, il titolo del progetto e descrizione sopra il canvas ed il bottone Index nell’angolo in alto a sinistra.
