@@ -9,7 +9,6 @@ Kirby nel suo canon ha il potere di aspirare e mangiare qualsiasi cosa, quindi e
 ![image](https://github.com/Moodyl/Kirby-s-Webcam-Bonanza/assets/101795037/57642b77-39c1-4f2e-8c5e-42481b5dd4ec)
 
 
-
 ## Design dell’interfaccia e modalità di interazione
 L’interfaccia è ridotta a 3 elementi principali: il canvas al centro della pagina, il titolo del progetto e descrizione sopra il canvas ed il bottone Index nell’angolo in alto a sinistra.
 Per controllare la propria marionetta è sufficente che la mano sia visibile nel campo della telecamera.
@@ -18,6 +17,9 @@ Ad ogni pallino mangiato il proprio Kirby crescerà.
 La sfida sta nell’essere più veloci ma anche più precisi dell’altro giocatore, la bocca è relativamente piccola e quindi il margine di errore nel mancare il pallino nella fretta è abbastanza elevato.
 Il gioco finisce quando uno dei due giocatori raggiunge i 50 punti. Premendo spazio una volta finito il minigioco ti permette di riavviarlo.
 
+<img width="1904" alt="Screen-1" src="https://github.com/Moodyl/Kirby-s-Webcam-Bonanza/assets/101795037/e280e9da-ee41-47dc-bb4b-9736de9ab639">
+<img width="1904" alt="Screen-2" src="https://github.com/Moodyl/Kirby-s-Webcam-Bonanza/assets/101795037/59bff371-fee5-4b99-9655-e3c7ec4745df">
+<img width="1904" alt="Screen-3" src="https://github.com/Moodyl/Kirby-s-Webcam-Bonanza/assets/101795037/b7780a30-0771-4fe7-8b49-75f1538422a5">
 
 
 ## Tecnologia utilizzata
