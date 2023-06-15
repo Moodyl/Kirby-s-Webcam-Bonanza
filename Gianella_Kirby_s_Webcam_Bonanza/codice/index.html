@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+	<title>Kirby's Webcam Bonanza</title>
+
+	<script src="https://unpkg.com/@tensorflow/tfjs-core@3.7.0/dist/tf-core.min.js"></script>
+	<script src="https://unpkg.com/@tensorflow/tfjs-backend-webgl@3.7.0/dist/tf-backend-webgl.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/hand-pose-detection@2.0.0/dist/hand-pose-detection.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4/hands.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.min.js"></script>
+
+	<link rel="stylesheet" href="https://use.typekit.net/xsb5nih.css">
+
+	<style>
+		* {
+			box-sizing: border-box;
+			user-select: none;
+		}
+
+		html,
+		body {
+			height: 100%;
+		}
+
+		body {
+			width: 100%;
+			margin: 0;
+			padding: 0;
+			background-color: #ffafcc;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			font-family: "grenadine-mvb", sans-serif;
+			font-weight: 400;
+			font-style: normal;
+
+		}
+
+		.container {
+			margin: 20px 20px;
+			position: relative;
+		}
+
+		.layer {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		canvas {
+			display: block;
+			border-radius: 5px;
+			margin: 0 0 20px 0;
+		}
+
+		a {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			color: #ffafcc;
+			text-decoration: none;
+			padding: 15px 20px;
+			background-color: #fff;
+			border: 1px solid #fff;
+			border-radius: 5px;
+			transition: all 0.2s;
+		}
+
+		a:hover {
+			background-color: #ffafcc;
+			color: #fff;
+		}
+
+		h1 {
+			color: #fff;
+			font-size: 40px;
+			margin: 0;
+		}
+
+		h7 {
+			margin: 0 0 20px 0;
+			color: #fff;
+		}
+
+	</style>
+</head>
+
+<body>
+	<a href="https://ixd-supsi.github.io/2023/progetti/marionettadigitale/">index</a>
+	<h1>Kirby's Webcam Bonanza</h1>
+	<h7>First to eat 50 dots of their color wins!</h7>
+	<script src="src/sketch.js"></script>
+</body>
+
+</html>

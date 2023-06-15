@@ -21,7 +21,7 @@ class Dot {
 		this.y = random(0 + this.d, height - this.d);
 		this.stroke = 0;
 		this.color = color;
-		this.playerdot = playerdot
+		this.playerdot = playerdot;
 	}
 
 	display() {
@@ -59,14 +59,14 @@ class Player {
 		fill(this.color)
 		ellipse(this.x, this.y, this.d + inc * this.score, this.d + inc * this.score)
 
-		if(this.handedness == "Left"){
+		if (this.handedness == "Left") {
 			fill(255, 30, 100)
 		} else {
 			fill(0, 200, 172)
 		}
 		ellipse(this.x - 30, this.y + 10, this.d - 75, this.d - 85)
 		ellipse(this.x + 30, this.y + 10, this.d - 75, this.d - 85)
-		
+
 
 		//eyes
 		fill(0)
@@ -105,7 +105,7 @@ async function setup() {
 
 	for (let i = 0; i < 70; i++) {
 		let dotsLeft = new Dot(color(255, 123, 172), "Left");
-		dots.push(dotsLeft); 
+		dots.push(dotsLeft);
 
 		let dotsRight = new Dot(color(0, 255, 172), "Right");
 		dots.push(dotsRight);
@@ -189,17 +189,17 @@ async function draw() {
 
 			fill(0)
 			text("Game over!", width / 2, height / 2 - 22)
-			
+
 			fill(255)
 			text("Player 1 won", width / 2, height / 2 + 22)
-			
+
 
 		} else {
 			background(0, 255, 172)
-			
+
 			fill(0)
 			text("Game over!", width / 2, height / 2 - 22)
-			
+
 			fill(255)
 			text("Player 2 won", width / 2, height / 2 + 22)
 		}
@@ -243,8 +243,8 @@ function windowResized() {
 	image(capture, -width, 0, width, ratio)
 }
 
-function keyPressed(){
-	if (keyCode == 32){
+function keyPressed() {
+	if (keyCode == 32) {
 		location.reload();
 	}
 }
