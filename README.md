@@ -1,10 +1,13 @@
 # Documentazione - Kirby’s Webcam Bonanza
 Il progetto consiste in un minigioco multigiocatore di agilità e precisione dove ogni giocatore dovrà maneggiare la propria marionetta e mangiare i propri pallini per guadagnare punti e vincere.
 
+
+
 ## Riferimenti progettuali
 La marionetta è basata su Kirby, un personaggio della serie di videogiochi “Kirby“ prodotta da Nintendo.
 Kirby nel suo canon ha il potere di aspirare e mangiare qualsiasi cosa, quindi ecco perché il minigioco è incentrato sul mangiare pallini.
 ![image](https://github.com/Moodyl/Kirby-s-Webcam-Bonanza/assets/101795037/57642b77-39c1-4f2e-8c5e-42481b5dd4ec)
+
 
 
 ## Design dell’interfaccia e modalità di interazione
@@ -14,6 +17,8 @@ Per mangiare i pallini basta aprire il palmo della mano per aprire la bocca del 
 Ad ogni pallino mangiato il proprio Kirby crescerà.
 La sfida sta nell’essere più veloci ma anche più precisi dell’altro giocatore, la bocca è relativamente piccola e quindi il margine di errore nel mancare il pallino nella fretta è abbastanza elevato.
 Il gioco finisce quando uno dei due giocatori raggiunge i 50 punti. Premendo spazio una volta finito il minigioco ti permette di riavviarlo.
+
+
 
 ## Tecnologia utilizzata
 Il progetto si focalizza all’utilizzo della libreria MediaPipe per il tracciamento delle mani tramite la webcam del dispositivo.
@@ -68,8 +73,12 @@ class Player {
 }
 ```
 
-I pallini sono contenuti in un array di modo da restare memorizzati nella posizione data e, utilizzando push() e splice(), l’array viene modificato.
-La classe Dot contiene il metodo collide() che permette il trigger dello splicing e l’aumento del punteggio del giocatore.
+
+
+I pallini sono contenuti in un array di modo da restare memorizzati nella posizione data e, utilizzando `push()` e `splice()`, l’array viene modificato.
+La classe Dot contiene il metodo `collide()` che permette il trigger dello splicing e l’aumento del punteggio del giocatore.
+
+
 
 ```js
 class Dot {
@@ -99,6 +108,8 @@ class Dot {
 	}
 }
 ```
+
+
 
 ## Target e contesto d’uso
 Essendo un prodotto a scopo ludico, il target è piuttosto ampio (ma specialmente adatto ad un pubblico giovane) ed il contesto d’uso può essere per spazi interattivi touchless.
