@@ -5,8 +5,8 @@ Docenti: A. Gysin, G. Profeta
 Elaborato 1: Marionetta digitale
 
 # Kirby’s Webcam Bonanza
-Autore: Hans Manon  
-[MediaPipe demo-ES6](https://ixd-supsi.github.io/2023/esempi/mp_hands/es6/1_landmarks)
+Autore: Lauro Gianella  
+[Kirby’s Webcam Bonanza](https://ixd-supsi.github.io/2023/esempi/mp_hands/es6/1_landmarks)
 
 Il progetto consiste in un minigioco multigiocatore di agilità e precisione dove ogni giocatore dovrà maneggiare la propria marionetta e mangiare i propri pallini per guadagnare punti e vincere.
 
