@@ -6,7 +6,7 @@ Elaborato 1: Marionetta digitale
 
 # Kirby’s Webcam Bonanza
 Autore: Lauro Gianella  
-[Kirby’s Webcam Bonanza](https://ixd-supsi.github.io/2023/esempi/mp_hands/es6/1_landmarks)
+[Kirby’s Webcam Bonanza](https://moodyl.github.io/Kirby-s-Webcam-Bonanza/)
 
 Il progetto consiste in un minigioco multigiocatore di agilità e precisione dove ogni giocatore dovrà maneggiare la propria marionetta e mangiare i propri pallini per guadagnare punti e vincere.
 
