@@ -1,4 +1,13 @@
-# Documentazione - Kirby’s Webcam Bonanza
+SUPSI 2022-23  
+Corso d’interaction design, CV427.01  
+Docenti: A. Gysin, G. Profeta  
+
+Elaborato 1: Marionetta digitale
+
+# Kirby’s Webcam Bonanza
+Autore: Lauro Gianella  
+[Kirby’s Webcam Bonanza](https://moodyl.github.io/Kirby-s-Webcam-Bonanza/)
+
 Il progetto consiste in un minigioco multigiocatore di agilità e precisione dove ogni giocatore dovrà maneggiare la propria marionetta e mangiare i propri pallini per guadagnare punti e vincere.
 
 https://github.com/Moodyl/Kirby-s-Webcam-Bonanza/assets/101795037/e4082030-1534-49bf-9d6e-fb3ff41630df
